@@ -48,4 +48,21 @@ run_analysis <- function() {
   features_names<- read.table("./UCI HAR Dataset/features.txt")
   colnames(X_Merged)<-features_names[,2]
   
+  ## Step 2) From the X_Merged data, extract only those measurements 
+     which contain the mean and standard deviation for each measurement
+  
+  ## Using grepl, we find out those measurements which have the texts
+  ## mean() or std() and using these we create a vector list called selmeasures
+  
+  selmeasures<- grepl("mean()",colnames(X_Merged)) | grepl("std()",colnames(X_Merged))
+  
+  ## Using this vector list, we subset the X_Merged Dataframe so that it only contains
+  ## measures which are either have the string mean() or std(). We name this 
+  ## subsetted dataframe as Mean_Std_Measures
+  
+  Mean_Std_Measures<- X_Merged[,selmeasures]
+  
+  
+  
+  
 }
