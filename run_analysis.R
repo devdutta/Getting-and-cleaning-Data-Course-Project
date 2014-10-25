@@ -36,4 +36,16 @@ run_analysis <- function() {
   
   ## Step 1: Merges the training and the test sets to create one data set
   
+  ## Merge the X data, Y data and Subject data from the test and train sets
+  X_Merged<-rbind(X_test, X_train)
+  Y_Merged<-rbind(Y_test, Y_train)
+  subject_Merged<-rbind(subject_test, subject_train)
+  
+  ## The column names are available in the features data
+  ## Importing the features data and binding it with X_Merged
+  ## This will ensure the X_Merged has the proper column names (instead of V1, V2 etc)
+  
+  features_names<- read.table("./UCI HAR Dataset/features.txt")
+  colnames(X_Merged)<-features_names[,2]
+  
 }
