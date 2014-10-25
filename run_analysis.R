@@ -49,11 +49,11 @@ run_analysis <- function() {
   ## Importing the features data and binding it with X_Merged
   ## This will ensure the X_Merged has the proper column names (instead of V1, V2 etc)
   
-  features_names<- read.table("./UCI HAR Dataset/features.txt")
-  colnames(X_Merged)<-features_names[,2]
+  features_names <- read.table("./UCI HAR Dataset/features.txt")
+  colnames(X_Merged) <-features_names[,2]
   
   ## Step 2) From the X_Merged data, extract only those measurements 
-     which contain the mean and standard deviation for each measurement
+  ## which contain the mean and standard deviation for each measurement
   
   ## Using grepl, we find out those measurements which have the texts
   ## mean() or std() and using these we create a vector list called selmeasures
@@ -92,6 +92,10 @@ run_analysis <- function() {
   
   Mean_Std_Measures <- cbind(subject, Mean_Std_Measures)
   
+  ## Renaming column 1 as subject
+  
+  colnames(Mean_Std_Measures)[1] <- "subject"
+  
   ## So the Mean_Std_Measures dataframe has the following:
   
   ## 1st Column ----> Subject ID's
@@ -108,5 +112,13 @@ run_analysis <- function() {
   
   melt_stage <- melt(Mean_Std_Measures,id.vars=c("subject","Activity_Names"))
   tidy_data <- dcast(melt_stage, subject + Activity_Names ~ variable, mean)
+  
+  ## Create an output file for writing out the tidy_data output
+  
+  clean_data <- "tidy_data.txt"
+  
+  ## Writing out the tidy data into the file
+  
+  write.table(tidy_data, clean_data, row.names = FALSE, quote = FALSE)
   
 }
