@@ -16,7 +16,7 @@
 
 ##    1) This directory is already present --> "UCI HAR Dataset"
 ##    2) All the relevant data files are also present within this directory
-##    3) Expecting that the "reshpae" package and the plyr package is installed. 
+##    3) Expecting that the "reshpae", "reshape2" package and the plyr package is installed. 
 ##    4) If not, then you will have to install it before running this script
 
 run_analysis <- function() {
@@ -24,6 +24,7 @@ run_analysis <- function() {
   ## Since we will be using the reshape and plyr package, invoking them first
   
   library(reshape)
+  library(reshape2)
   library(plyr)
   
   ## Importing the Test Data
