@@ -37,3 +37,8 @@ Some assumptions if you are running this R Script
 10. creates an independent tidy data set with the average of each variable for each activity and
     each subject
 11. Create an output file for writing out the tidy data output
+
+## Cleaned Data
+
+The name of the resulting clean dataset is: `tidy_data.txt`. It contains one row for each subject/activity pair and columns for subject, activity, and each feature that was a mean or standard deviation from the original dataset.
+
