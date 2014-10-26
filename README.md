@@ -1,8 +1,5 @@
 # Readme File for run_analysis.R
 
-
-## run_analysis.R
-
 The run_analysis.R script does the following:
 
 1. Merges the training and the test sets to create one data set.
